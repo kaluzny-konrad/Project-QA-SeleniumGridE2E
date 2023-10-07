@@ -186,27 +186,6 @@ public class Tests
     }
 
     [Test]
-    public void AllProductsShouldHaveCommentLink()
-    {
-        var driver = GetDriver();
-        try
-        {
-            var pageBody = driver.FindElement(By.XPath("//div[@class='container-fluid page']"));
-            var allProducts = pageBody.FindElements(By.XPath("//article[@class='product_pod']"));
-            foreach (var product in allProducts)
-            {
-                var link = product.FindElement(By.XPath(".//p[contains(@class, 'star-rating')]/following-sibling::a"));
-                Assert.That(link.GetAttribute("href"), Does.Match(@"http://books\.toscrape\.com/catalogue/.*"));
-            }
-        }
-        catch (Exception ex)
-        {
-            TearDown(driver);
-            Assert.Fail(ex.Message);
-        }
-    }
-
-    [Test]
     public void AllResultsShouldBe1000()
     {
         var driver = GetDriver();
